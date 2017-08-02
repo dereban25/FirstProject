@@ -7,17 +7,26 @@ import java.util.Arrays;
  */
 public class Solution {
     public static void main (String[] args) {
-        String str = "p (26)   gbfdg 104 293 101 144 34  28  160 180";
+        String str = "p   gbfdg ";
 
 
         System.out.println(Arrays.toString(findNumbers(str)));
     }
     public static int[] findNumbers(String text){
-        String[] array = (text.replaceAll("\\D+", " ").trim()).split(" ");
+       try{ String[] array = (text.replaceAll("\\D+", " ").trim()).split(" ");
         int[] a = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             a[i] = Integer.valueOf(array[i]);
         }
         return a;
+    }catch(Exception e){
+           String[] array = (text.replaceAll("\\D+", " ").trim()).split(" ");
+           int[] a = new int[array.length];
+           for (int i = 0; i < array.length; i++) {
+              // boolean b = Integer.valueOf(array[i])== a[i];
+           }
+           System.out.println("not a number");
+       }
+        return new int[0];
     }
 }
