@@ -20,13 +20,12 @@ public class Solution {
         }
         return a;
     }catch(Exception e){
-           String[] array = (text.replaceAll("\\D+", " ").trim()).split(" ");
-           int[] a = new int[array.length];
-           for (int i = 0; i < array.length; i++) {
-              // boolean b = Integer.valueOf(array[i])== a[i];
-           }
+
            System.out.println("not a number");
-       }
-        return new int[0];
+
+        return new int[Integer.parseInt(text)];
+    }
+
     }
 }
+
