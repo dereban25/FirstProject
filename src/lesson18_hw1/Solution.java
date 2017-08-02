@@ -22,7 +22,7 @@ public class Solution {
                 a[i] = Integer.valueOf(array[i]);
             }
 
-        } catch(Throwable e) {
+        } catch(Exception e) {
 
             System.out.println("not a number");
         }
