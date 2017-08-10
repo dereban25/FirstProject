@@ -12,8 +12,13 @@ public class File{
     public File(long id, String name, String format, long size){
         this.id = id;
         this.name = name;
+
+    }
+
+    public File(long id, String name, String format){
+        this.id = id;
+        this.name = name;
         this.format = format;
-        this.size = size;
     }
 
     public long getId(){

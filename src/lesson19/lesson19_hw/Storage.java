@@ -10,16 +10,11 @@ public class Storage{
     private String storageCountry;
     private long storageSize;
 
-    public Storage(long id, File[] files){
+    public Storage(long id, File[] files, String[] formatsSupported, String storageCountry, long storageSize){
         this.id = id;
         this.files = files;
-    }
-
-    public long getId(){
-        return id;
-    }
-
-    public void setId(long id){
-        this.id = id;
+        this.formatsSupported = formatsSupported;
+        this.storageCountry = storageCountry;
+        this.storageSize = storageSize;
     }
 }
