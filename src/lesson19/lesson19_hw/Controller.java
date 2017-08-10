@@ -12,12 +12,16 @@ public class Controller{
     }
     public void delete(Storage storage, File file){
         int a = 0;
-        for(File check :files){
-            if(check.equals(files)){
-                files[a]=null;
-                break;
+        try {
+            for(File check :files){
+                if(check.equals(files)){
+                    files[a]=null;
+                    break;
+                }
+                a++;
             }
-            a++;
+        }catch(NullPointerException e){
+            System.out.println("We have mistakes" + e);
         }
     }
 
