@@ -8,30 +8,10 @@ public class Controller{
     Storage[] chranilishe = new Storage[100];
 
     public File put(Storage storage, File file){
-        if(file == null)
-            return null;
-        int a = 0;
-        for(Storage fileSave : chranilishe)
-        for(File file1 : files) {
-            if(file1 == null)
-            if(fileSave==null){
-                files[a] = file;
-                break;
-            }
-            a++;
-        }
-        return file;
+
     }
     public void delete(Storage storage, File file){
-        int index = 0;
-        for(Storage fileSave : chranilishe)
-            for(File file1 : files){
-            if (file1.equals(file)&&fileSave.equals(file)){
-                files[index] = null;
-                break;
-            }
-            index++;
-        }
+
     }
 
     public void transferAll(Storage storageFrom, Storage storageTo){
