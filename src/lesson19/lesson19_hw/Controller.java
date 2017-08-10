@@ -11,8 +11,9 @@ public class Controller{
 
     }
     public void delete(Storage storage, File file){
-        int a = 0;
+
         try {
+            int a = 0;
             for(File check :files){
                 if(check.equals(files)){
                     files[a]=null;
