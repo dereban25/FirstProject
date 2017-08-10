@@ -13,7 +13,6 @@ public class File{
         this.id = id;
         this.name = name;
         this.format = format;
-        this.size = size;
     }
 
     public long getId(){

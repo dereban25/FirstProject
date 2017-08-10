@@ -12,10 +12,10 @@ public class Controller{
     public static void delete(Storage storage,File file){
 
     }
-    public static void transferAll(Storage storageFrom,Storage storageTo){
+    public void transferAll(Storage storageFrom,Storage storageTo){
 
     }
-    public static void transferFile(Storage storageFrom,Storage storageTo,long id){
+    public void transferFile(Storage storageFrom,Storage storageTo,long id){
 
     }
 
