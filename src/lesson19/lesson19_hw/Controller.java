@@ -6,10 +6,10 @@ package lesson19.lesson19_hw;
 public class Controller{
 
 
-    private static void put(Storage storage, File file){
+    public void put(Storage storage, File file){
 
     }
-    public static void delete(Storage storage,File file){
+    public void delete(Storage storage,File file){
 
     }
     public void transferAll(Storage storageFrom,Storage storageTo){
