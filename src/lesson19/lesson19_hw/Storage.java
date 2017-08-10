@@ -17,4 +17,32 @@ public class Storage{
         this.storageCountry = storageCountry;
         this.storageSize = storageSize;
     }
+
+    public long getId(){
+        return id;
+    }
+
+    public String[] getFormatsSupported(){
+        return formatsSupported;
+    }
+
+    public long getStorageSize(){
+        return storageSize;
+    }
+
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+
+        Storage storage = (Storage) o;
+
+        return id == storage.id;
+    }
+
+    @Override
+    public int hashCode(){
+        return (int) (id ^ (id >>> 32));
+    }
 }
