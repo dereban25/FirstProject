@@ -12,7 +12,6 @@ public class Controller{
     }
     public void delete(Storage storage, File file){
 
-        try {
             int a = 0;
             for(File check :files){
                 if(check.equals(files)){
@@ -21,9 +20,6 @@ public class Controller{
                 }
                 a++;
             }
-        }catch(NullPointerException e){
-            System.out.println("We have mistakes" + e);
-        }
     }
 
     public void transferAll(Storage storageFrom, Storage storageTo){
