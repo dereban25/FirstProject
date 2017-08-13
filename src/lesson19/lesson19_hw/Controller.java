@@ -9,13 +9,13 @@ public class Controller{
 
     public void put(Storage storage, File file){
         int a = 0;
-
-        for(File file1 : files) {
-            if(file1==null) {
-                files[a] = file1;
-                break;
-            }
-            a++;
+//
+//        for(File file1 : files) {
+//            if(file1==null) {
+//                files[a] = file1;
+//                break;
+//            }
+//            a++;
 
     }
     public void delete(Storage storage, File file){
