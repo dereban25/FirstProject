@@ -30,7 +30,7 @@ public class Controller{
                    }
                    a++;
                }
-           }catch(nullPointerException e){
+           }catch(NullPointerException e){
                System.out.println("we have mistakes" + e);
            }
     }
