@@ -10,7 +10,7 @@ public class Controller{
     public void put(Storage storage, File file){
         File[] storages =storage.getFiles();
 
-        try {
+
             int a = 0;
             for(File storage1:storages)
             for(File fi : files) {
@@ -21,9 +21,6 @@ public class Controller{
                 a++;
             }
 
-        } catch(NullPointerException e) {
-            System.out.println("We have mistakes" + e);
-        }
     }
 
     public void delete(Storage storage, File file){
