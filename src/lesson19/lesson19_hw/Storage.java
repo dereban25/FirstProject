@@ -30,5 +30,7 @@ public class Storage{
         return storageSize;
     }
 
-
+    public File[] getFiles(){
+        return files;
+    }
 }
