@@ -8,7 +8,25 @@ public class Controller{
    File[] files = new File[100];
 //    Storage[] chranilishe = new Storage[100];
 
-    public void put(Storage storage, File file){
+    public File put(Storage storage, File file){
+        if(file==null)
+            return null;
+        int countPlaced = 0;
+        for (File fi : files) {
+            if(fi != null)
+                countPlaced++;
+        }
+            int a = 0;
+
+            for (File fi : files) {
+                if (fi == null) {
+                    files[a] = file;
+                    break;
+                }
+                a++;
+            }
+            return file;
+
 
     }
     public void delete(Storage storage, File file){
