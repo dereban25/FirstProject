@@ -30,9 +30,14 @@ public class File{
         return name;
     }
 
-    public void setName(String name){
+    public boolean setName(String name){
+
+        if(getName().length()<10)
         this.name = name;
+
+        return false;
     }
+
 
     public String getFormat(){
         return format;
