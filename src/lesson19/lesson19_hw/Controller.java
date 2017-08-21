@@ -1,3 +1,4 @@
+
 package lesson19.lesson19_hw;
 
 /**
@@ -7,26 +8,13 @@ public class Controller{
     File[] files = new File[100];
 //    Storage[] chranilishe = new Storage[100];
 
-    public void put(Storage storage, File file){
-
-
-        try {
-            int a = 0;
-            for(File fi : files) {
-                if(fi.getName() != file.getName() && fi.getId() != file.getId() && fi.getName().length() < 10) {
-                    files[a] = file;
-                    break;
-                }
-                a++;
-            }
-        }catch(NullPointerException e){
-            System.out.println("We have mistakes"+e);
-        }
+    public void put(Storage storage, File file) throws Exception{
+       validate(storage,file);
     }
 
     public void delete(Storage storage, File file){
         // Storage[] storages = new Storage[50];
-       // File[] files = new File[50];
+        // File[] files = new File[50];
         try {
             int a = 0;
             for(File check : files) {
@@ -49,5 +37,58 @@ public class Controller{
 
     }
 
+    private void checkForSize(Storage storage, long fileSize) throws Exception{
+        long usedSize = 0;
+        for(File file : storage.getFiles()) {
+            if(file != null)
+                usedSize += file.getSize();
+        }
+        if(usedSize + fileSize > storage.getStorageSize())
+            throw new Exception("No free space in storage " + storage.getId());
+    }
+    private void validate(Storage storage,File file)throws Exception{
+        findById(storage,file.getId());
+        checkFormat(storage,file.getFormat());
+        checkForFreePlace(storage);
+        checkForSize(storage,file.getSize());
+
+    }
+
+    private void checkForFreePlace(Storage storage) throws Exception{
+        for(File file : storage.getFiles()) {
+            if(file == null)
+                return;
+        }
+        throw new Exception("No free place in storage " + storage.getId());
+    }
+
+    private void checkForFreePlace(Storage storage, int placesNeeded) throws Exception{
+        int count = 0;
+        for(File file : storage.getFiles()) {
+            if(file == null)
+                count++;
+        }
+        if(count < placesNeeded)
+            throw new Exception("No free place in storage " + storage.getId());
+    }
+
+    private void checkFormat(Storage storage, String fileFormat) throws Exception{
+        for(String format : storage.getFormatsSupported()) {
+            if(format.equals(fileFormat))
+                return;
+        }
+        throw new Exception(fileFormat + " is not supported in storage" + storage.getId());
+    }
+    private File findById(Storage storage,long id) throws Exception{
+        for(File file : storage.getFiles()){
+            if(file != null && file.getId()==id)
+                throw new Exception("File " + id + "already exist in storage " + storage.getId());
+        }
+        return null;
+    }
+
 
 }
+
+
+
