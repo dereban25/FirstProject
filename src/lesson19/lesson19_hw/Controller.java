@@ -5,18 +5,19 @@ package lesson19.lesson19_hw;
  */
 public class Controller{
     File[] files = new File[100];
-//    Storage[] chranilishe = new Storage[100];
+    Storage[] chranilishe = new Storage[100];
 
     public void put(Storage storage, File file){
         try {
             int a = 0;
-
-            for(File fi : files) {
-                if(fi == null) {
-                    files[a] = file;
-                    break;
+            for(Storage storage1 : chranilishe) {
+                for(File fi : files) {
+                    if(fi == null) {
+                        files[a] = file;
+                        break;
+                    }
+                    a++;
                 }
-                a++;
             }
 
         } catch(NullPointerException e) {
