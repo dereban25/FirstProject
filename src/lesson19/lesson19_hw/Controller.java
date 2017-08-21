@@ -8,24 +8,25 @@ public class Controller{
 //    Storage[] chranilishe = new Storage[100];
 
     public void put(Storage storage, File file){
-        File[] storages =storage.getFiles();
 
 
+        try {
             int a = 0;
-            for(File storage1:storages)
             for(File fi : files) {
-                if(fi == null&&storage1==null) {
+                if(fi.getName() != file.getName() && fi.getId() != file.getId() && fi.getName().length() < 10) {
                     files[a] = file;
                     break;
                 }
                 a++;
             }
-
+        }catch(NullPointerException e){
+            System.out.println("We have mistakes"+e);
+        }
     }
 
     public void delete(Storage storage, File file){
-       // Storage[] storages = new Storage[50];
-        File[] files = new File[50];
+        // Storage[] storages = new Storage[50];
+       // File[] files = new File[50];
         try {
             int a = 0;
             for(File check : files) {
