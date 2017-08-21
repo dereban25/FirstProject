@@ -8,24 +8,18 @@ public class Controller{
 //    Storage[] chranilishe = new Storage[100];
 
     public void put(Storage storage, File file){
-        try{
+        try {
+            int a = 0;
 
-        int countPlaced = 0;
-        for(File fi : files) {
-            if(fi != null)
-                countPlaced++;
-        }
-        int a = 0;
-
-        for(File fi : files) {
-            if(fi == null) {
-                files[a] = file;
-                break;
+            for(File fi : files) {
+                if(fi == null) {
+                    files[a] = file;
+                    break;
+                }
+                a++;
             }
-            a++;
-        }
 
-    }catch(NullPointerException e){
+        } catch(NullPointerException e) {
             System.out.println("We have mistakes" + e);
         }
     }
@@ -54,16 +48,5 @@ public class Controller{
 
     }
 
-//    public Storage checkFiles(String[] formatsSupported, long storageSize, long id, String name){
-//
-//        for(Storage file : chranilishe)
-//            for(File file1 : files) {
-//                if(file.getFormatsSupported() == new String[]{"exe", "txt", "doc"})
-//                    if(!file.equals(id) && file1.equals(name) && file1.getName().length() < 10)
-//                        if(file.getStorageSize() <= 500000) {
-//                            return file;
-//                        }
-//            }
-//        return null;
-//    }
+
 }
