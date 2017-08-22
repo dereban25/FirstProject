@@ -15,7 +15,7 @@ public class Controller{
             if(validate(storage, files))
                return file;
         }
-        throw new Exception("No free place in storage " + storage.getFiles());
+        throw new Exception("File is in storage with such " + file.getName());
     }
 
 
