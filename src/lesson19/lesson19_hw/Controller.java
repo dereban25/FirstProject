@@ -13,7 +13,7 @@ public class Controller{
 
         for(File files : storage.getFiles()){
             if(validate(storage, files))
-               return files;
+               return file;
         }
         throw new Exception("No free place in storage " + storage.getFiles());
     }
