@@ -5,7 +5,7 @@ package lesson19.lesson19_hw;
  * Created by dereban on 10.08.2017.
  */
 public class Controller{
-   File[] files = new File[100];
+   //File[] files = new File[100];
 //    Storage[] chranilishe = new Storage[100];
 
     public File put(Storage storage, File file) throws Exception{
@@ -23,8 +23,10 @@ public class Controller{
 
         for(File files : storage.getFiles()) {
             try {
-                if(validate(storage, files))
-                    return;
+                if(validate(storage, files)) {
+                   delete(storage, file);
+                }
+                    return ;
             } catch(Exception e) {
                 e.printStackTrace();
             }
