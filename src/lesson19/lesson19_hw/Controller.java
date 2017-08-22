@@ -14,7 +14,6 @@ public class Controller{
         for(File files : storage.getFiles()){
             if(files!= null )
                return files;
-            break;
         }
         throw new Exception("No free place in storage " + storage.getFiles());
     }
@@ -22,17 +21,13 @@ public class Controller{
 
     public void delete(Storage storage, File file){
 
-        try {
-            int a = 0;
-            for(File check : files) {
-                if(check.equals(files)) {
-                    files[a] = null;
-                    break;
-                }
-                a++;
+        for(File files : storage.getFiles()) {
+            try {
+                if(validate(storage, files))
+                    return;
+            } catch(Exception e) {
+                e.printStackTrace();
             }
-        } catch(NullPointerException e) {
-            System.out.println("We have mistakes" + e);
         }
     }
 
@@ -53,12 +48,13 @@ public class Controller{
         if(usedSize + fileSize > storage.getStorageSize())
             throw new Exception("No free space in storage " + storage.getId());
     }
-    private void validate(Storage storage,File file)throws Exception{
+    private boolean validate(Storage storage, File file)throws Exception{
         findById(storage,file.getId());
         checkFormat(storage,file.getFormat());
         checkForFreePlace(storage);
         checkForSize(storage,file.getSize());
 
+        return false;
     }
 
     private void checkForFreePlace(Storage storage) throws Exception{
