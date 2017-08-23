@@ -19,19 +19,15 @@ public class Controller{
     }
 
 
-    public void delete(Storage storage, File file){
+    public File delete(Storage storage, File file)throws Exception{
 
         for(File files : storage.getFiles()) {
-            try {
-                if(validate(storage, files)) {
-                   delete(storage, file);
-                }
-                    return ;
-            } catch(Exception e) {
-                e.printStackTrace();
+            if(files.equals(storage.getFiles()))
+                throw new Exception("File already exist in storage " + storage.getId());
             }
+            return null;
         }
-    }
+
 
     public void transferAll(Storage storageFrom, Storage storageTo){
 
