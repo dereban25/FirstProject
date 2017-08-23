@@ -8,12 +8,12 @@ public class Controller{
     File[] files = new File[100];
 //    Storage[] chranilishe = new Storage[100];
 
-    public File put(Storage storage, File file) throws Exception{
+    public void put(Storage storage, File file) throws Exception{
 
 
         for(File files : storage.getFiles()) {
-            if(validate(storage, files))
-                return file;
+            if(file == null)
+                return;
         }
         throw new Exception("File is in storage with such " + file.getName());
     }
