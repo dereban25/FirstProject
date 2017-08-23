@@ -5,28 +5,35 @@ package lesson19.lesson19_hw;
  * Created by dereban on 10.08.2017.
  */
 public class Controller{
-   //File[] files = new File[100];
+    File[] files = new File[100];
 //    Storage[] chranilishe = new Storage[100];
 
     public File put(Storage storage, File file) throws Exception{
 
 
-        for(File files : storage.getFiles()){
+        for(File files : storage.getFiles()) {
             if(validate(storage, files))
-               return file;
+                return file;
         }
         throw new Exception("File is in storage with such " + file.getName());
     }
 
 
-    public File delete(Storage storage, File file)throws Exception{
+    public void delete(Storage storage, File file){
 
-        for(File files : storage.getFiles()) {
-            if(files.equals(storage.getFiles()))
-                throw new Exception("File already exist in storage " + storage.getId());
+        try {
+            int a = 0;
+            for(File check : files) {
+                if(check.equals(files)) {
+                    files[a] = null;
+                    break;
+                }
+                a++;
             }
-            return null;
+        } catch(NullPointerException e) {
+            System.out.println("Have mistakes" + e);
         }
+    }
 
 
     public void transferAll(Storage storageFrom, Storage storageTo){
@@ -46,11 +53,12 @@ public class Controller{
         if(usedSize + fileSize > storage.getStorageSize())
             throw new Exception("No free space in storage " + storage.getId());
     }
-    private boolean validate(Storage storage, File file)throws Exception{
-        findById(storage,file.getId());
-        checkFormat(storage,file.getFormat());
+
+    private boolean validate(Storage storage, File file) throws Exception{
+        findById(storage, file.getId());
+        checkFormat(storage, file.getFormat());
         checkForFreePlace(storage);
-        checkForSize(storage,file.getSize());
+        checkForSize(storage, file.getSize());
 
         return false;
     }
@@ -80,9 +88,10 @@ public class Controller{
         }
         throw new Exception(fileFormat + " is not supported in storage" + storage.getId());
     }
-    private File findById(Storage storage,long id) throws Exception{
-        for(File file : storage.getFiles()){
-            if(file != null && file.getId()==id)
+
+    private File findById(Storage storage, long id) throws Exception{
+        for(File file : storage.getFiles()) {
+            if(file != null && file.getId() == id)
                 throw new Exception("File " + id + "already exist in storage " + storage.getId());
         }
         return null;
