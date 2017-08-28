@@ -5,7 +5,7 @@ package lesson19.lesson19_hw;
  * Created by dereban on 10.08.2017.
  */
 public class Controller{
-    File[] files = new File[100];
+   /// File[] files = new File[100];
 //    Storage[] chranilishe = new Storage[100];
 
     public File put(Storage storage, File file) throws Exception{
