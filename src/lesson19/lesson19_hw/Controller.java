@@ -9,38 +9,65 @@ public class Controller{
 //    Storage[] chranilishe = new Storage[100];
 
     public File put(Storage storage, File file) throws Exception{
-
-
+        validate(storage, file);
+        int index=0;
         for(File files : storage.getFiles()) {
-            if(validate(storage, files))
-                return file;
-        }
-        throw new Exception("File is in storage with such " + file.getName());
-    }
-
-
-    public void delete(Storage storage, File file){
-
-        try {
-            int a = 0;
-            for(File check : files) {
-                if(check.equals(files)) {
-                    files[a] = null;
-                    break;
-                }
-                a++;
+            if(files==null){
+                storage.getFiles()[index]=file;
+                break;
             }
-        } catch(NullPointerException e) {
-            System.out.println("Have mistakes" + e);
+                index++;
+        }
+       return storage.getFiles()[index];
+    }
+
+
+    public void delete(Storage storage, File file) throws Exception{
+
+     boolean isExist=false;
+     for(File fl:storage.getFiles()){
+         if(fl!=null && fl.equals(file)){
+             isExist = true;
+             break;
+         }
+     }
+     if(!isExist)
+         throw new Exception("File does not exist in storage "+ storage.getId()+".Cant be deleted");
+        int index = 0;
+        for(File fl:storage.getFiles()){
+            if(fl!=null && fl.equals(file)){
+                storage.getFiles()[index]=null;
+            }
+            index++;
         }
     }
 
 
-    public void transferAll(Storage storageFrom, Storage storageTo){
+    public void transferAll(Storage storageFrom, Storage storageTo) throws Exception{
+        long sizeOfFilesFromStorage=0;
+        for(File fileFromStorage:storageFrom.getFiles()){
+            findById(storageTo,fileFromStorage.getId());
+            checkFormat(storageTo,fileFromStorage.getFormat());
+            sizeOfFilesFromStorage+=fileFromStorage.getSize();
+        }
+        checkForFreePlace(storageTo,storageFrom.getFiles().length);
+        checkForSize(storageTo,sizeOfFilesFromStorage);
+        for(File fileFromStorage:storageFrom.getFiles()){
+            if(fileFromStorage!=null){
+                delete(storageFrom,fileFromStorage);
+                put(storageTo,fileFromStorage);
+            }
+        }
 
     }
 
-    public void transferFile(Storage storageFrom, Storage storageTo, long id){
+    public void transferFile(Storage storageFrom, Storage storageTo, long id) throws Exception{
+        for(File fileFromStorage:storageFrom.getFiles()){
+            if(fileFromStorage.getId()==id){
+                put(storageTo,fileFromStorage);
+                return;
+            }
+        }
 
     }
 
