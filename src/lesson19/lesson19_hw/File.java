@@ -56,9 +56,11 @@ public class File{
     @Override
     public boolean equals(Object o){
         if(this == o) return true;
-        if(o != null || getClass() != o.getClass()) return false;
+        if(o == null || getClass() != o.getClass()) return false;
+
 
         File file = (File) o;
+        if(file.getName()==getName()&&file.getId()==getId())return true;
 
         return name != null ? name.equals(file.name) : file.name == null;
     }
