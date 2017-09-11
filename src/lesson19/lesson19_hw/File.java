@@ -60,7 +60,7 @@ public class File{
 
 
         File file = (File) o;
-       // if(file.getName()==getName()&&file.getId()==getId())return true;
+     if(id !=file.id) return false;
 
         return name != null ? name.equals(file.name) : file.name == null;
     }
